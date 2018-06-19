@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        applicationId "com.github.trending"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode rootProject.ext.versionBuild
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //kotlin dependencies
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.reflect
+
+    //support dependencies
+    implementation deps.support.v4
+    implementation deps.support.appcompat
+    implementation deps.support.constraint_layout
+    implementation deps.support.cardview
+    implementation deps.support.recyclerview
+    implementation deps.support.design
+    implementation deps.support.ktx
+
+    // Architecture components
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    kapt deps.lifecycle.compiler
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+    implementation deps.room.rxjava2
+
+    //app specific dependencies
+    implementation deps.lottie
+    implementation deps.koin.android_architecture
+    implementation deps.rx_java
+    implementation deps.rx_android
+    implementation deps.ok_http
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2
+    implementation deps.glide.runtime
+    implementation deps.anko.common
+    annotationProcessor deps.glide.compiler
+
+    //test dependencies
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
+    testImplementation deps.mockito.kotlin
+    testCompile deps.koin.test
+
+    compile project(path: ':data')
+}

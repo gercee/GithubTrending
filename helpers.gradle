@@ -1,0 +1,7 @@
+/**
+ * Shared file between builds so that they can all use helper methods for the build process.
+ **/
+
+static def getBuildNumber() {
+    System.getenv('BUILD_NUMBER') as Integer ?: 1
+}

@@ -1,0 +1,136 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and maven repositories.
+ **/
+
+def versions = [:]
+versions.arch_core = "1.1.1"
+versions.room = "1.1.0"
+versions.lifecycle = "1.1.1"
+versions.support = "27.1.1"
+versions.glide = "4.6.1"
+versions.android_gradle_plugin = "3.0.1"
+versions.koin = "0.9.3"
+versions.anko = "0.10.5"
+
+// test and debug libs
+versions.junit = "4.12"
+versions.espresso = "3.0.2"
+versions.atsl = "1.0.2"
+versions.mockito_kotlin = "1.5.0"
+versions.powermock = "1.7.3"
+versions.mockito = "2.13.0"
+versions.constraint_layout = "1.1.2"
+versions.lottie = "2.2.5"
+versions.rx_android = "2.0.1"
+versions.rx_java = "2.1.5"
+versions.ok_http = "3.10.0"
+versions.retrofit = "2.4.0"
+versions.ktx = "0.3"
+
+
+// instantiate dependency map
+ext.deps = [:]
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+kotlin.junit = "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+kotlin.gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+ext.deps.kotlin = kotlin
+
+// adding application libs
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.appcompat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+support.ktx = "androidx.core:core-ktx:$versions.ktx"
+ext.deps.support = support
+
+def lifecycle = [:]
+lifecycle.runtime = "android.arch.lifecycle:runtime:$versions.lifecycle"
+lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.lifecycle"
+lifecycle.java8 = "android.arch.lifecycle:common-java8:$versions.lifecycle"
+lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+def room = [:]
+room.runtime = "android.arch.persistence.room:runtime:$versions.room"
+room.compiler = "android.arch.persistence.room:compiler:$versions.room"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$versions.room"
+room.testing = "android.arch.persistence.room:testing:$versions.room"
+deps.room = room
+
+
+def play_services = [:]
+ext.deps.play_services = play_services
+
+ext.deps.junit = "junit:junit:$versions.junit"
+ext.deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
+ext.deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+ext.deps.rx_java = "io.reactivex.rxjava2:rxjava:$versions.rx_java"
+ext.deps.ok_http = "com.squareup.okhttp3:okhttp:$versions.ok_http"
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+deps.retrofit = retrofit
+
+
+def espresso = [:]
+espresso.core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+espresso.idling_resource = "com.android.support.test.espresso:espresso-idling-resource:$versions.espresso"
+ext.deps.espresso = espresso
+
+def atsl = [:]
+atsl.runner = "com.android.support.test:runner:$versions.atsl"
+atsl.rules = "com.android.support.test:rules:$versions.atsl"
+ext.deps.atsl = atsl
+
+def powermock = [:]
+powermock.mockito = "org.powermock:powermock-api-mockito:$versions.powermock"
+powermock.junit = "org.powermock:powermock-module-junit4:$versions.powermock"
+powermock.junit_rule_agent = "org.powermock:powermock-module-junit4-rule-agent:$versions.powermock"
+powermock.junit_rule = "org.powermock:powermock-module-junit4-rule:$versions.powermock"
+ext.deps.powermock = powermock
+
+def mockito = [:]
+mockito.kotlin = "com.nhaarman:mockito-kotlin:$versions.mockito_kotlin"
+mockito.core = "org.mockito:mockito-core:$versions.mockito"
+ext.deps.mockito = mockito
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def koin = [:]
+koin.kotlin = "org.koin:koin-core:$versions.koin"
+koin.android = "org.koin:koin-android:$versions.koin"
+koin.android_architecture = "org.koin:koin-android-architecture:$versions.koin"
+koin.spark_kotlin = "org.koin:koin-spark:$versions.koin"
+koin.ktor_kotlin = "org.koin:koin-ktor:$versions.koin"
+koin.test = "org.koin:koin-test:$versions.koin"
+deps.koin = koin
+
+def anko =[:]
+anko.common = "org.jetbrains.anko:anko-commons:$versions.anko"
+deps.anko = anko
+
+
+ext.deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+def build_versions = [:]
+build_versions.compile_sdk = 26
+build_versions.min_sdk = 23
+build_versions.target_sdk = 26
+build_versions.build_tools = "27.0.2"
+ext.build_versions = build_versions

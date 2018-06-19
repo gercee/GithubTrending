@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Github Trending</string>
+    <string name="commits">%1d commits</string>
+    <string name="branch">%1d branch</string>
+    <string name="releases">%1d releases</string>
+    <string name="contributors">%1d contributors</string>
+</resources>
