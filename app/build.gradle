@@ -40,17 +40,9 @@ dependencies {
     implementation deps.support.design
     implementation deps.support.ktx
 
-    // Architecture components
-    implementation deps.lifecycle.runtime
-    implementation deps.lifecycle.extensions
-    kapt deps.lifecycle.compiler
-    implementation deps.room.runtime
-    kapt deps.room.compiler
-    implementation deps.room.rxjava2
-
     //app specific dependencies
     implementation deps.lottie
-    implementation deps.koin.android_architecture
+    implementation deps.koin.android
     implementation deps.rx_java
     implementation deps.rx_android
     implementation deps.ok_http
